@@ -2,8 +2,10 @@ import express, { Request, Response, NextFunction } from "express";
 import "dotenv/config";
 import router from "./routes";
 import dbConnect from "./utils/db";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", router);

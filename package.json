@@ -16,6 +16,7 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.8.0",
 	"dependencies": {
+		"cors": "^2.8.5",
 		"dotenv": "^16.5.0",
 		"express": "^5.1.0",
 		"mongoose": "^8.14.3"
@@ -23,6 +24,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.26.0",
 		"@tsconfig/node20": "^20.1.5",
+		"@types/cors": "^2.8.18",
 		"@types/express": "^5.0.1",
 		"@types/node": "^22.15.18",
 		"@typescript-eslint/eslint-plugin": "^8.32.1",
