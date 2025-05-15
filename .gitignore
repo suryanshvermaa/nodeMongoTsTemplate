@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+pnpm-lock.yaml
+.vscode
+mongo-data
+*.log
+*.env
+*.local
+*.local.*
