@@ -6,6 +6,7 @@ export const createUser = async (
 	next: NextFunction
 ) => {
 	try {
+		
 	} catch (err) {
 		next(err);
 	}
