@@ -1,5 +1,5 @@
 {
-	"name": "prod-project",
+	"name": "express-server",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -12,9 +12,8 @@
 		"format": "prettier . --write"
 	},
 	"keywords": [],
-	"author": "suryansh verma",
+	"author": "",
 	"license": "ISC",
-	"packageManager": "pnpm@10.8.0",
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^16.5.0",
