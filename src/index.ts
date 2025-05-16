@@ -3,6 +3,7 @@ import "dotenv/config";
 import router from "./routes";
 import dbConnect from "./utils/db";
 import cors from "cors";
+import response from "./utils/response";
 
 const app = express();
 app.use(cors());
@@ -18,7 +19,7 @@ dbConnect().catch(() => {
 //health route
 app.get("/health", (req: Request, res: Response, next: NextFunction) => {
 	try {
-		res.status(200).send("healthy");
+		response(res,200,"healty",{});
 	} catch (err) {
 		next(err);
 	}
