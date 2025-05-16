@@ -6,3 +6,6 @@ mongo-data
 *.log
 *.local
 *.local.*
+.env
+.env.local
+*.env*
