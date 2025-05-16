@@ -4,6 +4,7 @@ import router from "./routes";
 import dbConnect from "./utils/db";
 import cors from "cors";
 import response from "./utils/response";
+import errorHandler from "./middlewares/error.middleware";
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ app.get("/health", (req: Request, res: Response, next: NextFunction) => {
 		next(err);
 	}
 });
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
