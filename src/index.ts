@@ -7,6 +7,8 @@ import response from "./utils/response";
 import errorHandler from "./middlewares/error.middleware";
 
 const app = express();
+
+//middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +19,11 @@ dbConnect().catch(() => {
 	process.exit(1);
 });
 
-//health route
+/**
+ * @description health check route
+ * @route GET /health
+ * @access public
+ */
 app.get("/health", (req: Request, res: Response, next: NextFunction) => {
 	try {
 		response(res,200,"healty",{});
@@ -25,6 +31,9 @@ app.get("/health", (req: Request, res: Response, next: NextFunction) => {
 		next(err);
 	}
 });
+/**
+ * @description Error handling middleware
+ */
 app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
