@@ -19,12 +19,15 @@ A modern, production-ready Express.js starter template with TypeScript, ESLint, 
 .
 ├── src/
 │   ├── controllers/      # Route controllers
+|   ├── middlewares/        # Custom middleware
 │   ├── models/           # Mongoose models
 │   ├── routes/           # Express route definitions
+│   ├── types/            # TypeScript type definitions
 │   ├── utils/            # Utility modules (DB, error handling, etc.)
 │   └── index.ts          # App entry point
 ├── .env                  # Environment variables
 ├── .gitignore
+├── .dockerignore
 ├── .prettierrc           # Prettier config
 ├── .prettierignore
 ├── eslint.config.mjs     # ESLint config
@@ -39,27 +42,31 @@ A modern, production-ready Express.js starter template with TypeScript, ESLint, 
 ### Installation
 
 1. **Clone the repository:**
-   ```bash
-   git clone <your-repo-url>
-   cd prod-project
-   ```
+
+    ```bash
+    git clone <your-repo-url>
+    cd prod-project
+    ```
 
 2. **Install dependencies:**
-   ```bash
-   pnpm install
-   ```
-   or
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    pnpm install
+    ```
+
+    or
+
+    ```bash
+    npm install
+    ```
 
 3. **Set up environment variables:**
-   - Copy `.env.example` to `.env` and fill in your values (if `.env.example` exists).
-   - Example:
-     ```
-     PORT=3000
-     MONGO_URI=mongodb://localhost:27017/mydb
-     ```
+    - Copy `.env.example` to `.env` and fill in your values (if `.env.example` exists).
+    - Example:
+        ```
+        PORT=3000
+        MONGO_URI=mongodb://localhost:27017/mydb
+        ```
 
 ### Development
 
@@ -123,8 +130,8 @@ docker run -p 3000:3000 --env-file .env my-express-app
 - **Base path:** `/api/v1/`
 - Example route (expand as you add features):
 
-  - **GET** `/api/v1/`  
-    (Currently mapped to `createUser` controller, adjust as needed.)
+    - **GET** `/api/v1/`  
+      (Currently mapped to `createUser` controller, adjust as needed.)
 
 ## Code Quality
 

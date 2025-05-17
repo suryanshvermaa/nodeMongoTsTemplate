@@ -1,9 +1,9 @@
-import { Response } from "express"
+import { Response } from "express";
 
-export interface IRes{
-    success: boolean;
-    message: string;
-    data: object;
+export interface IRes {
+	success: boolean;
+	message: string;
+	data: object;
 }
 
 /**
@@ -14,12 +14,17 @@ export interface IRes{
  * @param data - response data
  * @returns - express response object
  */
-const response=(res:Response,status:number,message:string,data:object)=>{
-    const resObj:IRes={
-        success:true,
-        message,
-        data:data
-    }
-    return res.status(status).json(resObj);
-}
+const response = (
+	res: Response,
+	status: number,
+	message: string,
+	data: object
+) => {
+	const resObj: IRes = {
+		success: true,
+		message,
+		data: data,
+	};
+	return res.status(status).json(resObj);
+};
 export default response;

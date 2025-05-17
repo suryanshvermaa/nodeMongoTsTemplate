@@ -26,7 +26,7 @@ dbConnect().catch(() => {
  */
 app.get("/health", (req: Request, res: Response, next: NextFunction) => {
 	try {
-		response(res,200,"healty",{});
+		response(res, 200, "healty", {});
 	} catch (err) {
 		next(err);
 	}
