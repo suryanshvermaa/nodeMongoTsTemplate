@@ -10,13 +10,13 @@ export default defineConfig([
 		ignores: ["node_modules", "./dist"],
 	},
 	{
-		files: ["**/*.{js,mjs,cjs,ts}"],
+		files: ["**/src*.{js,mjs,cjs,ts}"],
 		plugins: { js, "@typescript-eslint": eslintPluginTs },
 		extends: ["js/recommended"],
 	},
-	{ files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
+	{ files: ["**/src*.js"], languageOptions: { sourceType: "commonjs" } },
 	{
-		files: ["**/*.{js,mjs,cjs,ts}"],
+		files: ["**/src*.{js,mjs,cjs,ts}"],
 		languageOptions: { globals: globals.node },
 	},
 	{
