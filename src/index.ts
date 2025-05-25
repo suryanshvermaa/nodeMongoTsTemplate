@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import "dotenv/config";
 import router from "./routes";
-import dbConnect from "./utils/db";
+import dbConnect from "./config/db";
 import cors from "cors";
 import response from "./utils/response";
 import errorHandler from "./middlewares/error.middleware";
