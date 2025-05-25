@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"rootDir": "./src",
 		"outDir": "./dist",
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"typeRoots": ["./src/types"]
 	},
 	"include": ["./src/**/*"],
 	"exclude": ["./dist"]
