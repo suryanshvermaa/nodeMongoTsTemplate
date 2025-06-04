@@ -1,21 +1,13 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
+import asyncHandler from "../utils/asyncHandler";
 
 /**
  * @description Create a new user
  * @route POST /api/v1/users
  * @access Public
- * @param req
- * @param res
- * @param next
+ * @param {Request} req
+ * @param {Response} res
  */
-export const createUser = async (
-	req: Request,
-	res: Response,
-	next: NextFunction
-) => {
-	try {
-		
-	} catch (err) {
-		next(err);
-	}
-};
+export const createUser = asyncHandler(
+	async (req: Request, res: Response) => {}
+);
