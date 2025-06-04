@@ -44,7 +44,7 @@ const createToken = async (data: object, time: number): Promise<string> => {
 				expiresIn: `${time}m`,
 			}); //time in minutes
 			resolve(token);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			reject(err);
 		}
 	});
@@ -66,7 +66,7 @@ const verifyToken = async (token: string): Promise<object> => {
 				reject(new AppError("Token expires or invalid", 401));
 			const data = JSON.parse(JSON.stringify(isVerified));
 			resolve(data);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			reject(err);
 		}
 	});
