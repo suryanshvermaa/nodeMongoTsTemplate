@@ -3,6 +3,12 @@ import { NextFunction, Request, Response } from "express";
 import { AppError } from "../utils/error";
 import asyncHandler from "../utils/asyncHandler";
 
+export interface ITokenPayload {
+	userId: string | number;
+	email?: string;
+	data?: object;
+}
+
 /**
  *
  * @returns {Function} - Returns a middleware function that checks for a valid JWT token in the request headers or body
@@ -24,7 +30,7 @@ const auth = () => {
 				req.headers.authorization?.split(" ")[1] ||
 				"";
 			if (!token) throw new AppError("Unauthorised", 401);
-			const data = await verifyToken(token);
+			const data:ITokenPayload = await verifyToken(token);
 			req.user = data;
 			next();
 		}
@@ -37,7 +43,7 @@ const auth = () => {
  * @param {number} time - Expiration time in minutes
  * @returns {Promise<String>} - Returns a promise that resolves to the created token
  */
-const createToken = async (data: object, time: number): Promise<string> => {
+const createToken = async (data: ITokenPayload, time: number): Promise<string> => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const token = await jwt.sign(data, process.env.AUTH_SECRET!, {
@@ -55,7 +61,7 @@ const createToken = async (data: object, time: number): Promise<string> => {
  * @param {string} token - The JWT token to verify
  * @returns {Promise<object>} - Returns a promise that resolves to an object containing data
  */
-const verifyToken = async (token: string): Promise<object> => {
+const verifyToken = async (token: string): Promise<ITokenPayload> => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const isVerified = await jwt.verify(

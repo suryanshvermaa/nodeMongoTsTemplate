@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import "dotenv/config";
 import router from "./routes";
 import dbConnect from "./config/db";
@@ -6,6 +6,10 @@ import cors from "cors";
 import response from "./utils/response";
 import errorHandler from "./middlewares/error.middleware";
 import asyncHandler from "./utils/asyncHandler";
+import apolloServer from "./config/apollo";
+import { expressMiddleware } from "@as-integrations/express5";
+import graphqlContext from "./graphql/auth/context";
+import { GraphQLError } from "graphql";
 
 const app = express();
 
@@ -32,6 +36,20 @@ app.get(
 	})
 );
 
+/**
+ * @description apolloServer setup
+ */
+const startApolloServer = async () => {
+	await apolloServer.start();
+	app.use(
+		"/graphql",
+		expressMiddleware(apolloServer, {
+			context: graphqlContext,
+			
+		})
+	);
+};
+startApolloServer();
 app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
