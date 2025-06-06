@@ -11,6 +11,8 @@ FROM node:23-alpine3.20 AS runner
 WORKDIR /app
 COPY --from=builder /build/dist ./dist
 COPY --from=builder /build/package.json ./package.json
+COPY --from=builder /build/prisma ./prisma
+COPY --from=builder /build/generated ./generated
 
 RUN npm install --omit=dev
 
@@ -21,4 +23,4 @@ USER nodejs
 EXPOSE 3000
 ENV PORT=3000
 
-CMD [ "npm","start" ]
+CMD RUN npx prisma migrate dev --name initdb && npx prisma migrate deploy && npm run start

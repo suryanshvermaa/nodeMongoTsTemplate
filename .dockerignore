@@ -13,3 +13,4 @@ eslint.config.js
 .eslintrc
 .eslintignore
 .vscode
+postgres-data
