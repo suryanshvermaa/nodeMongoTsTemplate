@@ -3,6 +3,12 @@ import { NextFunction, Request, Response } from "express";
 import { AppError } from "../utils/error";
 import asyncHandler from "../utils/asyncHandler";
 
+export interface ITokenPayload {
+	userId: string | number;
+	email?: string;
+	data?: object;
+}
+
 /**
  *
  * @returns {Function} - Returns a middleware function that checks for a valid JWT token in the request headers or body
@@ -55,7 +61,7 @@ const createToken = async (data: object, time: number): Promise<string> => {
  * @param {string} token - The JWT token to verify
  * @returns {Promise<object>} - Returns a promise that resolves to an object containing data
  */
-const verifyToken = async (token: string): Promise<object> => {
+const verifyToken = async (token: string): Promise<ITokenPayload> => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const isVerified = await jwt.verify(
