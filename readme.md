@@ -36,8 +36,9 @@ pnpm create express-mongo-prod
 ```
 
 The CLI will prompt you for:
-- Project name  
-- Package manager  
+
+- Project name
+- Package manager
 - Language (TypeScript or JavaScript)
 
 ---

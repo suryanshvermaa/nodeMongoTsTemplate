@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "../utils/asyncHandler";
+import response from "../utils/response";
 
 /**
  * @description Create a new user
@@ -8,6 +9,6 @@ import asyncHandler from "../utils/asyncHandler";
  * @param {Request} req
  * @param {Response} res
  */
-export const createUser = asyncHandler(
-	async (req: Request, res: Response) => {}
-);
+export const createUser = asyncHandler(async (req: Request, res: Response) => {
+	response(res, 201, "user created", { user: "testing uer" });
+});
