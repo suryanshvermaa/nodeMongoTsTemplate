@@ -9,7 +9,8 @@
 		"lint:fix": "eslint . --fix",
 		"dev": "nodemon src/index.ts",
 		"start": "node dist/index.js",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"prepare": "husky"
 	},
 	"keywords": [],
 	"author": "",
