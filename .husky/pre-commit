@@ -1,2 +1,2 @@
-prettier . --write
+prettier . --write 
 eslint .
