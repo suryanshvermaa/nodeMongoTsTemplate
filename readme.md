@@ -1,157 +1,117 @@
-# Express.js Production-Ready Starter Template
+# create-express-mongo-prod
 
-A modern, production-ready Express.js starter template with TypeScript, ESLint, Prettier, Docker, Docker Compose, and a scalable folder structure. Designed for best practices and rapid development.
+[![npm version](https://img.shields.io/npm/v/create-express-mongo-prod)](https://www.npmjs.com/package/create-express-mongo-prod)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Features
+> ⚡️ A zero-config CLI tool to scaffold a production-ready Express.js + MongoDB application in seconds.  
+> Supports both **TypeScript** and **JavaScript**. Built on top of `nodeMongoTsTemplate` and other best-practice templates.
 
-- **TypeScript** for type safety and maintainability
-- **ESLint** and **Prettier** for code quality and consistent formatting
-- **Docker** and **Docker Compose** for easy containerization and local development
-- **Environment variable** support via `.env`
-- **MongoDB** integration with Mongoose
-- **Scalable folder structure**: separation of routes, controllers, models, and utilities
-- **Health check endpoint** for monitoring
-- **Pre-configured scripts** for development, linting, formatting, and building
+---
 
-## Folder Structure
+## 🚀 Features
+
+- **Quick Project Scaffolding**: Start coding instantly with a full-featured Express + MongoDB setup.
+- **TypeScript & JavaScript Support**: Choose your preferred language.
+- **Modern Project Structure**: Organized, scalable, and ready for real-world apps.
+- **Production-Ready**: Includes environment config, error handling, request validation, and deployment setup.
+- **Code Quality Tools**: ESLint, Prettier, and VSCode settings for consistent, clean code.
+- **Multiple Package Managers**: Works with npm, yarn, or pnpm.
+- **No Global Install Needed**: Use via `npm create`, `yarn create`, or `pnpm create`.
+
+---
+
+## ⚡ Quick Start
+
+### 1. Scaffold a New Project
+
+```bash
+# With npm
+npm create express-mongo-prod@latest
+
+# With yarn
+yarn create express-mongo-prod
+
+# With pnpm
+pnpm create express-mongo-prod
+```
+
+The CLI will prompt you for:
+- Project name  
+- Package manager  
+- Language (TypeScript or JavaScript)
+
+---
+
+### 2. Start Developing
+
+```bash
+cd your-project-name
+npm install      # or yarn install, pnpm install
+npm run dev      # or yarn dev, pnpm dev
+```
+
+---
+
+## 📁 Project Structure
+
+The generated project is based on [`nodeMongoTsTemplate`](https://github.com/suryanshverma/nodeMongoTsTemplate) and includes:
 
 ```
-.
 ├── src/
-│   ├── controllers/      # Route controllers
-|   ├── middlewares/        # Custom middleware
-│   ├── models/           # Mongoose models
-│   ├── routes/           # Express route definitions
-│   ├── types/            # TypeScript type definitions
-│   ├── utils/            # Utility modules (DB, error handling, etc.)
-│   └── index.ts          # App entry point
-├── .env                  # Environment variables
-├── .gitignore
-├── .dockerignore
-├── .prettierrc           # Prettier config
-├── .prettierignore
-├── eslint.config.mjs     # ESLint config
-├── tsconfig.json         # TypeScript config
-├── Dockerfile
-├── docker-compose.yml
-└── package.json
+│   ├── config/         # Environment & DB configs
+│   ├── controllers/    # Route controllers
+│   ├── middlewares/    # Custom and error middlewares
+│   ├── models/         # Mongoose models
+│   ├── routes/         # Express routers
+│   ├── utils/          # Utility functions
+│   ├── index.ts          # Express app main file
+├── .env.example        # Sample environment variables
+├── .eslintrc.js        # ESLint config
+├── .prettierrc         # Prettier config
+├── tsconfig.json       # TypeScript config (if selected)
+├── package.json
+└── README.md
 ```
 
-## Getting Started
+---
 
-### Installation
+## 🧩 Key Features in the Template
 
-1. **Clone the repository:**
+- Express.js server setup
+- MongoDB integration (via Mongoose)
+- Environment variables with `.env` support
+- Centralized error handling
+- Request validation (with Joi or similar)
+- Ready for deployment (Docker, Heroku, etc.)
+- ESLint & Prettier for code style
+- VSCode settings for auto-formatting
 
-    ```bash
-    git clone <your-repo-url>
-    cd prod-project
-    ```
+---
 
-2. **Install dependencies:**
+## 🛠️ Customization
 
-    ```bash
-    pnpm install
-    ```
+After generation, you can:
 
-    or
+- Add your own routes and models in `src/routes` and `src/models`
+- Configure environment variables in `.env`
+- Extend validation, error handling, and authentication as needed
 
-    ```bash
-    npm install
-    ```
+---
 
-3. **Set up environment variables:**
-    - Copy `.env.example` to `.env` and fill in your values (if `.env.example` exists).
-    - Example:
-        ```
-        PORT=3000
-        MONGO_URI=mongodb://localhost:27017/mydb
-        ```
+## 🙏 Acknowledgements
 
-### Development
+- [`nodeMongoTsTemplate`](https://github.com/suryanshverma/nodeMongoTsTemplate) by **Suryansh Verma**
+- Other open-source boilerplates and best practices
 
-Start the development server with hot-reloading:
+---
 
-```bash
-pnpm dev
-```
+## 🤝 Contributing
 
-### Linting & Formatting
+Contributions, issues, and feature requests are welcome!  
+Feel free to [open an issue](https://github.com/suryanshverma/create-express-mongo-prod/issues) or submit a PR.
 
-- **Lint code:** `pnpm lint`
-- **Fix lint errors:** `pnpm lint:fix`
-- **Format code:** `pnpm format`
+---
 
-### Build
+## 📄 License
 
-Compile TypeScript to JavaScript:
-
-```bash
-pnpm build
-```
-
-### Production
-
-Start the compiled app:
-
-```bash
-pnpm start
-```
-
-## Docker Usage
-
-### Build and Run with Docker Compose
-
-```bash
-docker-compose up --build
-```
-
-- The app runs on [http://localhost:3000](http://localhost:3000)
-- MongoDB runs on port `27017` with credentials set in `docker-compose.yml`
-
-### Standalone Docker
-
-Build and run the app container:
-
-```bash
-docker build -t my-express-app .
-docker run -p 3000:3000 --env-file .env my-express-app
-```
-
-## API Structure
-
-### Health Check
-
-- **GET** `/health`  
-  Returns `"healthy"` if the server is running.
-
-### User Routes
-
-- **Base path:** `/api/v1/`
-- Example route (expand as you add features):
-
-    - **GET** `/api/v1/`  
-      (Currently mapped to `createUser` controller, adjust as needed.)
-
-## Code Quality
-
-- **ESLint**: See `eslint.config.mjs` for rules and TypeScript integration.
-- **Prettier**: See `.prettierrc` for formatting rules.
-
-## TypeScript
-
-- Configured via `tsconfig.json`
-- Source code in `src/`, output to `dist/`
-
-## Environment Variables
-
-- Managed via `.env` and `dotenv` package.
-- Example variables: `PORT`, `MONGO_URI`
-
-## Contributing
-
-Feel free to fork, open issues, or submit PRs to improve this template!
-
-## License
-
-[ISC](LICENSE)
+**MIT** © [Suryansh Verma](https://github.com/suryanshverma)
