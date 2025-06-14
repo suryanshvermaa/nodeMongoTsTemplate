@@ -43,7 +43,10 @@ const auth = () => {
  * @param {number} time - Expiration time in minutes
  * @returns {Promise<String>} - Returns a promise that resolves to the created token
  */
-const createToken = async (data: ITokenPayload, time: number): Promise<string> => {
+const createToken = async (
+	data: ITokenPayload,
+	time: number
+): Promise<string> => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const token = await jwt.sign(data, process.env.AUTH_SECRET!, {
