@@ -14,3 +14,4 @@ eslint.config.js
 .eslintignore
 .vscode
 postgres-data
+generated
