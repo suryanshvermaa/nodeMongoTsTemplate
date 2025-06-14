@@ -8,7 +8,7 @@ const s3client = new S3Client({
 		accessKeyId: process.env.ACCESS_KEY_ID!,
 		secretAccessKey: process.env.SECRET_ACCESS_KEY!,
 	},
-	forcePathStyle: true,// if using s3 like service,otherwise remove this property
+	forcePathStyle: true, // if using s3 like service,otherwise remove this property
 });
 
 export default s3client;
