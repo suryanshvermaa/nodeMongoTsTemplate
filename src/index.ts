@@ -1,7 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import "dotenv/config";
 import router from "./routes";
-import dbConnect from "./config/db";
 import cors from "cors";
 import response from "./utils/response";
 import errorHandler from "./middlewares/error.middleware";
@@ -9,7 +8,6 @@ import asyncHandler from "./utils/asyncHandler";
 import apolloServer from "./config/apollo";
 import { expressMiddleware } from "@as-integrations/express5";
 import graphqlContext from "./graphql/auth/context";
-import { GraphQLError } from "graphql";
 
 const app = express();
 
@@ -18,11 +16,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", router);
-
-//db connection
-dbConnect().catch(() => {
-	process.exit(1);
-});
 
 /**
  * @description health check route
@@ -45,7 +38,6 @@ const startApolloServer = async () => {
 		"/graphql",
 		expressMiddleware(apolloServer, {
 			context: graphqlContext,
-			
 		})
 	);
 };

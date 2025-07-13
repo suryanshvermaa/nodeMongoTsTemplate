@@ -1,9 +1,9 @@
-import {GraphQLFormattedError} from "graphql";
+import { GraphQLFormattedError } from "graphql";
 
-const graphQlError = (err:GraphQLFormattedError) => {
+const graphQlError = (err: GraphQLFormattedError) => {
 	return {
 		success: false,
-		message:err.message,
+		message: err.message,
 		data: {},
 	};
 };

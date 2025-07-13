@@ -30,7 +30,7 @@ const auth = () => {
 				req.headers.authorization?.split(" ")[1] ||
 				"";
 			if (!token) throw new AppError("Unauthorised", 401);
-			const data:ITokenPayload = await verifyToken(token);
+			const data: ITokenPayload = await verifyToken(token);
 			req.user = data;
 			next();
 		}
@@ -43,7 +43,10 @@ const auth = () => {
  * @param {number} time - Expiration time in minutes
  * @returns {Promise<String>} - Returns a promise that resolves to the created token
  */
-const createToken = async (data: ITokenPayload, time: number): Promise<string> => {
+const createToken = async (
+	data: ITokenPayload,
+	time: number
+): Promise<string> => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const token = await jwt.sign(data, process.env.AUTH_SECRET!, {
