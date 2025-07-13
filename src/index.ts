@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import "dotenv/config";
 import router from "./routes";
 import cors from "cors";

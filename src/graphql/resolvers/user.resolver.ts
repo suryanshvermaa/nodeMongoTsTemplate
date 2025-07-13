@@ -17,7 +17,7 @@ const userResolver = {
 			const skipContent = 10 * (page - 1);
 			return await prisma.user.findMany({
 				skip: skipContent,
-				take: 10
+				take: 10,
 			});
 		},
 	},
@@ -34,9 +34,9 @@ const userResolver = {
 				const { userId } = context;
 				if (!userId) throw new Error("user id not found");
 				const user = await prisma.user.findUnique({
-					where:{
-						id: Number(userId)
-					}
+					where: {
+						id: Number(userId),
+					},
 				});
 				if (!user) throw new Error("User not exists");
 				const isMatched = await bcrypt.compare(
@@ -44,14 +44,14 @@ const userResolver = {
 					user.password
 				);
 				if (!isMatched) throw new Error("Password is not correct");
-				const updatedUser=await prisma.user.update({
-					where:{
-						id: Number(userId)
+				const updatedUser = await prisma.user.update({
+					where: {
+						id: Number(userId),
 					},
-					data:{
-						password: await bcrypt.hash(password, 10)
-					}
-				})
+					data: {
+						password: await bcrypt.hash(password, 10),
+					},
+				});
 				return updatedUser;
 			} catch (error) {
 				if (error instanceof Error) throw new Error(error.message);
