@@ -8,4 +8,3 @@ mongo-data
 *.local.*
 .env
 .env.local
-*.env*
