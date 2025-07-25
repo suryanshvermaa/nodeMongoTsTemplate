@@ -1,7 +1,6 @@
 node_modules
 dist
 pnpm-lock.yaml
-.vscode
 mongo-data
 *.log
 *.local
